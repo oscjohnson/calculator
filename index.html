@@ -1,12 +1,14 @@
 <html>
 	<head>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="jquery.js"></script>
 		<link rel="stylesheet" href="reset.css">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width, user-scalable=no"/>
 		<script src="fastclick.js"></script>
 		<style>
 			*{
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
 				box-sizing: border-box;
 			}
 			body{
@@ -35,9 +37,13 @@
 			#calculator .row div:first-child{
 				border-left: 1px solid black;
 			}
+			.darkgrey{
+				background: rgb(204, 204, 205);
+
+			}
 			#calculator .row div:last-child{
 				color: white;
-				background: #F17E09;
+				/*background: #F17E09;*/
 			}
 			#calculator .row div:last-child:hover{
 				padding-top: 17px;
@@ -45,6 +51,21 @@
 			}
 			#calculator .row:last-child div{
 				border-bottom: 1px solid black;
+			}
+			#divide{
+				background: rgb(247, 143, 18);
+			}
+			#times{
+				background: rgb(247, 140, 17);
+			}
+			#minus{
+				background: rgb(246, 135, 16);
+			}
+			#plus{
+				background: rgb(245, 129, 16);
+			}
+			#calc{
+				background: rgb(244, 122, 15);
 			}
 			.result{
 				height: 100px;
@@ -67,7 +88,7 @@
 			}
 			.grey{
 				color: black;
-				background: #d0d1d3;
+				background: rgb(215,216,218);
 			}.grey:hover{
 				background:rgb(226, 225, 225);
 				cursor: pointer;
@@ -78,6 +99,13 @@
 			}
 		</style>
 		<script>
+			//oversta gra background: rgb(204, 204, 205);
+			//gra background: rgb(211, 212, 215);
+			//#1 background: rgb(147, 143, 18);
+			//#2 background: rgb(247, 140, 17);
+			//#3 background: rgb(246, 135, 16);
+			//#4 background: rgb(245, 129, 16);
+			//#5 background: rgb(244, 122, 15);
 			window.addEventListener('load', function(){
 					testB = document.getElementById('body');
 
@@ -123,26 +151,24 @@
 				$('#erase').on('click', function(){
 					$(this).css('background', '#d0d1d3');
 				});
-				$('.calc').on('click', function(){
 
-				});
-				$('.minus').on('click', function(){
+				$('#minus').on('click', function(){
 					calc();
 					action = "minus";
 				});
-				$('.plus').on('click', function(){
+				$('#plus').on('click', function(){
 					calc();
 					action = "plus";
 				});				
-				$('.times').on('click', function(){
+				$('#times').on('click', function(){
 					calc();
 					action = "times";
 				});
-				$('.divide').on('click', function(){
+				$('#divide').on('click', function(){
 					calc();
 					action = "divide";
 				});
-				$('.calc').on('click', function(){
+				$('#calc').on('click', function(){
 					calc();
 				});
 
@@ -181,35 +207,35 @@
 		<div id="calculator">
 			<div class="result"></div>
 			<div class="row">
-				<div id="erase" class="grey">AC</div>
-				<div class="grey " style="color: #d0d1d3;">&plusmn;</div>
-				<div class="grey number" style="color: #d0d1d3;">%</div>
-				<div class="divide">&divide;</div>
+				<div id="erase" class="darkgrey">AC</div>
+				<div class="darkgrey " style="color: #d0d1d3;">&plusmn;</div>
+				<div class="darkgrey number" style="color: #d0d1d3;">%</div>
+				<div id="divide">&divide;</div>
 
 			</div>
 			<div class="row numbers">
 				<div class="grey number">7</div>
 				<div class="grey number">8</div>
 				<div class="grey number">9</div>
-				<div class="times">&times;</div>
+				<div id="times">&times;</div>
 
 			</div>
 			<div class="row numbers">
 				<div class="grey number">4</div>
 				<div class="grey number">5</div>
 				<div class="grey number">6</div>
-				<div class="minus">-</div>
+				<div id="minus">-</div>
 			</div>
 			<div class="row numbers">
 				<div class="grey number">1</div>
 				<div class="grey number">2</div>
 				<div class="grey number">3</div>
-				<div class="plus">+</div>
+				<div id="plus">+</div>
 			</div>
 			<div class="numbers row">
 				<div class="zero number grey">0</div>
 				<div class="grey dot" >.</div>
-				<div class="calc">=</div>
+				<div id="calc">=</div>
 			</div>
 
 		</div>
