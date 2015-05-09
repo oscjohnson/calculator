@@ -19,7 +19,6 @@ jQuery(document).ready(function($) {
 		render();
 	});
 
-	$('.row div:last-child').on('click', function(){});
 
 	$('.numbers .number').on('click', function(){
 		if (calculator.hasState() && !calculator.hasMemory()) {
@@ -29,12 +28,6 @@ jQuery(document).ready(function($) {
 		var digit = + $(this).html();
 		calculator.appendDigit(digit);
 		render();
-	});
-
-	$('.numbers .number').on('touchend', function(){});
-
-	$('#erase').on('click', function(){
-		$(this).css('background', '#d0d1d3');
 	});
 
 	$('#minus').on('click', calculator.setSub);
@@ -52,5 +45,8 @@ jQuery(document).ready(function($) {
 			$('.result').append(".");
 		}
 	});
+
+	$('.row div:last-child').on('click', function(){});
+	$('.numbers .number').on('touchend', function(){});
 
 });
