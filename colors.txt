@@ -1,0 +1,26 @@
+//oversta gra background: rgb(204, 204, 205);
+			//gra background: rgb(211, 212, 215);
+			//#1 background: rgb(147, 143, 18);
+			//#2 background: rgb(247, 140, 17);
+			//#3 background: rgb(246, 135, 16);
+			//#4 background: rgb(245, 129, 16);
+			//#5 background: rgb(244, 122, 15);
+
+//from left upper to right bottom
+
+//greys
+
+195, 196, 198
+212, 213, 215
+203, 205,207
+199,200, 203
+195, 196, 198
+
+
+//orange
+
+249,144,18
+249, 138,17
+249, 133, 16
+249,127,15
+249,121,15

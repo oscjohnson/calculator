@@ -1,213 +1,19 @@
 <html>
 	<head>
-		<script src="jquery.js"></script>
 		<link rel="stylesheet" href="reset.css">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width, user-scalable=no"/>
-		<script src="fastclick.js"></script>
-		<style>
-			*{
-				-moz-box-sizing: border-box;
-				-webkit-box-sizing: border-box;
-				box-sizing: border-box;
-			}
-			body{
-				font-family: "Open Sans";
-				font-weight: 300; 
-				-webkit-touch-callout: none;
-				-webkit-user-select: none;
-				-khtml-user-select: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
-			}
-			#calculator{
-				width: 320px;
-				margin: 0px auto;
-			}
-			#calculator .row div{
-				float: left;
-				border-top: 1px solid black;
-
-				border-right: 1px solid black;
-				/*padding: 15px;*/
-				width: 80px;
-				height: 78px;
-			}
-			#calculator .row div:first-child{
-				border-left: 1px solid black;
-			}
-			.darkgrey{
-				background: rgb(204, 204, 205);
-
-			}
-			#calculator .row div:last-child{
-				color: white;
-				/*background: #F17E09;*/
-			}
-			#calculator .row div:last-child:hover{
-				padding-top: 17px;
-				border: 4px solid black;
-			}
-			#calculator .row:last-child div{
-				border-bottom: 1px solid black;
-			}
-			#divide{
-				background: rgb(247, 143, 18);
-			}
-			#times{
-				background: rgb(247, 140, 17);
-			}
-			#minus{
-				background: rgb(246, 135, 16);
-			}
-			#plus{
-				background: rgb(245, 129, 16);
-			}
-			#calc{
-				background: rgb(244, 122, 15);
-			}
-			.result{
-				height: 100px;
-				background: #333;
-				color: white;
-				text-align: right;
-				padding-right: 10px;
-				padding-top: 40px;
-				font-size: 45px; 
-			}
-			#erase{
-				padding-top: 27px;
-				font-size: 25px;
-			}
-			.number, .row div{
-
-				text-align: center;
-				font-size: 35px;
-				padding-top: 20px;
-			}
-			.grey{
-				color: black;
-				background: rgb(215,216,218);
-			}.grey:hover{
-				background:rgb(226, 225, 225);
-				cursor: pointer;
-			}
-
-			.zero{
-				width: 160px !important;
-			}
-		</style>
-		<script>
-			//oversta gra background: rgb(204, 204, 205);
-			//gra background: rgb(211, 212, 215);
-			//#1 background: rgb(147, 143, 18);
-			//#2 background: rgb(247, 140, 17);
-			//#3 background: rgb(246, 135, 16);
-			//#4 background: rgb(245, 129, 16);
-			//#5 background: rgb(244, 122, 15);
-			window.addEventListener('load', function(){
-					testB = document.getElementById('body');
-
-				//Android 2.2 needs FastClick to be instantiated before the other listeners so that the stopImmediatePropagation hack can work.
-				FastClick.attach(testB);
-			},false);
-			jQuery(document).ready(function($) {
-				var action;
-				var first;
-				var second;
-
-				$('.row div:last-child').on('click', function(){
-					//$('.result').append($(this).html());
-				});
-
-				$('.numbers .number').on('click', function(){
-					//$(this).css('background', 'rgb(226, 225, 225)');
-				
-						if(action !== undefined && first === undefined){
-							first = + $('.result').html();
-							$('.result').empty();
-						}
-						if($('.result').html().length > 11){
-							$('.result').css('font-size', '35px');
-						}else{
-							$('.result').css('font-size', '45px');
-						}
-						$('.result').append($(this).html());
-
-					
-				});
-
-				$('.numbers .number').on('touchend', function(){
-					//$(this).css('background', '#d0d1d3');
-
-				});
-
-				$('#erase').on('click', function(){
-					$('.result').html("");
-					first = undefined;
-					action = undefined;
-				});
-				$('#erase').on('click', function(){
-					$(this).css('background', '#d0d1d3');
-				});
-
-				$('#minus').on('click', function(){
-					calc();
-					action = "minus";
-				});
-				$('#plus').on('click', function(){
-					calc();
-					action = "plus";
-				});				
-				$('#times').on('click', function(){
-					calc();
-					action = "times";
-				});
-				$('#divide').on('click', function(){
-					calc();
-					action = "divide";
-				});
-				$('#calc').on('click', function(){
-					calc();
-				});
-
-				$('.dot').on('click', function(){
-					if(/[.]/.test($('.result').html()) == false){
-						$('.result').append(".");
-					}
-				});
-
-				function calc(){
-					if(action !== undefined && first !== undefined){
-						var result;
-						if(action == "plus"){
-							var second = + $('.result').html();
-							result = first + second;
-						}else if(action == "minus"){
-							result = first - + $('.result').html();
-						}else if(action == "times"){
-							var second = + $('.result').html();
-							result = first * second;
-						}else if(action == "divide"){
-							var second = + $('.result').html();
-							result = first / second; 
-						}
-
-						$('.result').html(result);
-						action = undefined;
-						first = undefined;
-					}
-				}
-
-			});
-		</script>
+		<link rel="stylesheet" href="style.css">
+		
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/fastclick.js"></script>
+		<script src="js/bundle.js"></script>
 	</head>
 	<body id="body">
 		<div id="calculator">
 			<div class="result"></div>
 			<div class="row">
-				<div id="erase" class="darkgrey">AC</div>
+				<div id="all-clear" class="darkgrey">AC</div>
 				<div class="darkgrey " style="color: #d0d1d3;">&plusmn;</div>
 				<div class="darkgrey number" style="color: #d0d1d3;">%</div>
 				<div id="divide">&divide;</div>
@@ -218,7 +24,6 @@
 				<div class="grey number">8</div>
 				<div class="grey number">9</div>
 				<div id="times">&times;</div>
-
 			</div>
 			<div class="row numbers">
 				<div class="grey number">4</div>
@@ -232,7 +37,7 @@
 				<div class="grey number">3</div>
 				<div id="plus">+</div>
 			</div>
-			<div class="numbers row">
+			<div class="row numbers">
 				<div class="zero number grey">0</div>
 				<div class="grey dot" >.</div>
 				<div id="calc">=</div>
