@@ -8,3 +8,5 @@ Then
 ```sh
 npm start
 ```
+
+![printscreen](img/printscreen.png)
